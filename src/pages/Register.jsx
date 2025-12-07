@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import axios from 'axios';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
+import SocialLogin from './SocialLogin';
 
 
 const Register = () => {
@@ -121,7 +122,7 @@ const Register = () => {
                     className='text-blue-400 underline'
                     to="/login">Login</Link></p>
             </form>
-            {/* <SocialLogin></SocialLogin> */}
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
