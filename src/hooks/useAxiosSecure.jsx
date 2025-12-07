@@ -9,7 +9,7 @@ import { useEffect } from "react";
 
 
 const axiosSecure = axios.create({
-    baseURL: 'https://zap-shift-server-phi.vercel.app'
+    baseURL: 'http://localhost:3000'
 })
 
 const useAxiosSecure = () => {
