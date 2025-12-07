@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import CreateClubs from "../pages/createClubs/CreateClubs";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AllAdminClubs from "../pages/Dashboard/AllAdminClubs";
 
 
 
@@ -32,5 +34,16 @@ export const router = createBrowserRouter([
     {
         path: 'createClubs',
         element: <CreateClubs></CreateClubs>
+    },
+
+    {
+        path: 'dashboard',
+        element: <DashboardLayout></DashboardLayout>,
+        children: [
+            {
+                path: 'allAdminClubs',
+                element: <AllAdminClubs></AllAdminClubs>
+            }
+        ]
     }
 ])
