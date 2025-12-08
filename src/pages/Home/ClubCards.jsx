@@ -3,6 +3,7 @@ import useAxios from '../../hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../../shared/Loading';
 import { motion } from "motion/react"
+import { Link } from 'react-router';
 
 const ClubCards = () => {
 
@@ -86,9 +87,9 @@ const ClubCards = () => {
         <div className="flex items-center justify-between">
          
 
-          <button className="bg-white border border-gray-300 text-gray-800 font-medium px-4 py-2 rounded-lg hover:bg-gray-50 transition">
+          <Link to={`/allClubs/${club._id}`} className="bg-white border border-gray-300 text-gray-800 font-medium px-4 py-2 rounded-lg hover:bg-gray-50 transition">
             Be a Member of <span className='text-xl font-bold text-cyan-500'>{club.clubName}</span>
-          </button>
+          </Link>
         </div>
       </div>
     </motion.div>

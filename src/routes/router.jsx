@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import CreateClubs from "../pages/createClubs/CreateClubs";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AllAdminClubs from "../pages/Dashboard/AllAdminClubs";
+import ClubDetails from "../pages/Home/ClubDetails";
 
 
 
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
             {
                 index:true,
                 element: <Home></Home>
+            },
+            {
+                path: 'allClubs/:id',
+                element: <ClubDetails></ClubDetails>
             }
         ]
 
