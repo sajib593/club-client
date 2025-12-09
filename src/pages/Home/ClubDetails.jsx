@@ -27,7 +27,7 @@ let navigate = useNavigate();
     // console.log(singleclub);
 
 // get data for the status
-    const { data: membership, refetch: refetchMembership } = useQuery({
+    const { data: membership, refetch: refetchMembership, isLoading: loadingMembership } = useQuery({
     queryKey: ["membership", user?.email, id],
     enabled: !!user?.email,
     queryFn: async () => {
@@ -69,7 +69,7 @@ let navigate = useNavigate();
             Swal.fire("Success", "Membership Activated!", "success");
         } else if (res.data.status === "pending_payment") {
             Swal.fire("Pending", "Please complete your payment", "info");
-            navigate(`/payment/${res.data.insertedId}`);
+            navigate(`/dashboard/payment/${res.data.insertedId}`);
         }
 
     } catch (error) {
@@ -83,6 +83,8 @@ let navigate = useNavigate();
 
     if (isLoading) return <Loading></Loading>
   if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
+
+  if(loadingMembership) return <p>Loading.......</p>
 
 
     return (
