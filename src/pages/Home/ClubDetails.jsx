@@ -42,7 +42,7 @@ let navigate = useNavigate();
 
          if (membership?.status === "active") return;
     if (membership?.status === "pending_payment") {
-        return navigate(`/payment/${membership._id}`); 
+        return navigate(`/dashboard/payment/${membership._id}`); 
     }
 
         
@@ -52,6 +52,7 @@ let navigate = useNavigate();
             userName : user?.displayName,
             clubId : singleclub._id,
             membershipFee : singleclub?.membershipFee,
+            clubName: singleclub?.clubName,
             joinedAt: new Date(),
             expireAt: new Date(new Date().setFullYear(new Date().getFullYear() +1))
 

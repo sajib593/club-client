@@ -7,6 +7,9 @@ import CreateClubs from "../pages/createClubs/CreateClubs";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AllAdminClubs from "../pages/Dashboard/AllAdminClubs";
 import ClubDetails from "../pages/Home/ClubDetails";
+import Payment from "../pages/Dashboard/Payment";
+import PaymentSuccess from "../pages/Dashboard/PaymentSuccess";
+import PaymentCancelled from "../pages/Dashboard/PaymentCancelled";
 
 
 
@@ -48,7 +51,20 @@ export const router = createBrowserRouter([
             {
                 path: 'allAdminClubs',
                 element: <AllAdminClubs></AllAdminClubs>
-            }
+            },
+            {
+                path: 'payment/:membershipId',
+                element: <Payment></Payment>
+            },
+            {
+                path: 'payment-success',
+                element: <PaymentSuccess></PaymentSuccess>
+            },
+
+            {
+                path: 'payment-canceled',
+                element: <PaymentCancelled></PaymentCancelled>
+            },
         ]
     }
 ])
