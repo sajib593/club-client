@@ -103,6 +103,26 @@ const DashboardLayout = () => {
             </li>
             <li>
               <NavLink
+                to="/dashboard/showAllEvents"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="Events"
+              >
+                <CiDeliveryTruck className="text-xl" />
+                <span className="is-drawer-close:hidden">Events</span>
+              </NavLink>
+            </li>
+
+
+            <li>
+              <NavLink
                 to="/dashboard/allAdminClubs"
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 

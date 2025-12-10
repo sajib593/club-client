@@ -12,6 +12,8 @@ import PaymentSuccess from "../pages/Dashboard/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/PaymentCancelled";
 import CreateEvents from "../pages/Events/CreateEvents";
 import SelfClubs from "../pages/Dashboard/OnlClubMembers/SelfClubs";
+import ShowAllEvents from "../pages/Events/ShowAllEvents";
+import SingleEventDetails from "../pages/Events/SingleEventDetails";
 
 
 
@@ -75,6 +77,14 @@ export const router = createBrowserRouter([
             {
                 path: 'selfClubs',
                 element: <SelfClubs></SelfClubs>
+            },
+            {
+                path: 'showAllEvents',
+                element: <ShowAllEvents></ShowAllEvents>
+            },
+            {
+                path: 'singleEventDetails/:id',
+                element: <SingleEventDetails></SingleEventDetails>
             }
 
         ]

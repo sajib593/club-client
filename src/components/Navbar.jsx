@@ -69,7 +69,7 @@ const Navbar = () => {
                 
                 <NavLink to='/createClubs'>CreateClubs</NavLink>
                 <NavLink to='/dashboard/selfClubs'>Managers- Club</NavLink>
-                <NavLink to='/acceptedTasks'>Accepted-Tasks</NavLink>
+                <NavLink to='/dashboard/showAllEvents'>Events</NavLink>
                 <NavLink to='/dashboard/allAdminClubs'>AllAdminClubs</NavLink>
 
 
