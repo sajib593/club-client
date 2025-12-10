@@ -68,7 +68,7 @@ const Navbar = () => {
                 <NavLink to='/register'>Register</NavLink>
                 
                 <NavLink to='/createClubs'>CreateClubs</NavLink>
-                <NavLink to='/addJobs'>Add-Jobs</NavLink>
+                <NavLink to='/dashboard/selfClubs'>Managers- Club</NavLink>
                 <NavLink to='/acceptedTasks'>Accepted-Tasks</NavLink>
                 <NavLink to='/dashboard/allAdminClubs'>AllAdminClubs</NavLink>
 

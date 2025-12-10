@@ -1,13 +1,25 @@
-import React from "react";
+
 import { useForm } from "react-hook-form";
 import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router";
+import useAuth from "../../hooks/useAuth";
 
 const CreateEvents = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const axiosSecure = useAxios();
+    
+    const axiosSecure = useAxios();
+    let {id} = useParams();
+    console.log(id);
+    let user = useAuth();
 
-  // isPaid true হলে eventFee দেখাতে হবে
+
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+    defaultValues: {
+      clubId: id || "", // populate clubId from params
+    },
+  });
+
+  // isPaid true 
   const isPaid = watch("isPaid");
 
   const handleCreateEvent = async (data) => {
@@ -20,7 +32,8 @@ const CreateEvents = () => {
       isPaid: data.isPaid === "true",
       eventFee: data.isPaid === "true" ? Number(data.eventFee) : 0,
       maxAttendees: Number(data.maxAttendees) || null,
-      createdAt: new Date(),
+      email: user?.email
+      
     };
 
     try {

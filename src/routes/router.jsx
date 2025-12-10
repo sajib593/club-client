@@ -69,7 +69,7 @@ export const router = createBrowserRouter([
             },
             //club mambers
             {
-                path: 'createEvents',
+                path: 'createEvents/:id',
                 element: <CreateEvents></CreateEvents>
             },
             {

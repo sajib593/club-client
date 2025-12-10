@@ -3,6 +3,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../hooks/useAuth';
 import Loading from '../../../shared/Loading';
+import { Link } from 'react-router';
 
 const SelfClubs = () => {
 
@@ -52,9 +53,9 @@ const SelfClubs = () => {
         </div>
 
         {/* Button */}
-        <button className="btn btn-primary w-full">
-          Get Started
-        </button>
+        <Link to={`/dashboard/createEvents/${selfClub._id}`} className="btn btn-primary w-full">
+          Make An Event
+        </Link>
 
       </div>
     ))}
@@ -66,3 +67,16 @@ const SelfClubs = () => {
 };
 
 export default SelfClubs;
+
+
+
+
+// STRIPE_SECRET_KEY=sk_test_51PU40jP6Uda33limvCGNt0Ydh3uwySHn4MiTDvWooBTKIsj2NIHnOjLWQQY9nps4gtNyKCwJY1LcgaXywNFelkUL00xwCBlqt1
+
+// SITE_DOMAIN=http://localhost:5173
+
+
+// https://github.com/sajib593/club-server/security/secret-scanning/unblock-secret/36eEvFfLnd9EPzrTQ5i2ZGSRnIn
+
+
+
