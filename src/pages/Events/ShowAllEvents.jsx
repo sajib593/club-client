@@ -9,7 +9,7 @@ const ShowAllEvents = () => {
 
     let axiosInstance = useAxios();
 
-     let { data: showAllEvents = [], isLoading, refetch, isError } = useQuery({
+     let { data: showAllEvents = [], isLoading, isError } = useQuery({
         queryKey: ['ShowAllEvents'],
         queryFn: async () => {
             let res = await axiosInstance.get('/showAllEvents');

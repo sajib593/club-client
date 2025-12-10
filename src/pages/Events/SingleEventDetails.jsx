@@ -14,7 +14,7 @@ const SingleEventDetails = () => {
      let {id} = useParams();
     console.log(id);
 
-     let { data: singleEventDetails = {}, isLoading, refetch, isError } = useQuery({
+     let { data: singleEventDetails = {}, isLoading, isError } = useQuery({
         queryKey: ['singleEventDetails'],
         queryFn: async () => {
             let res = await axiosInstance.get(`/singleEventDetails/${id}`);

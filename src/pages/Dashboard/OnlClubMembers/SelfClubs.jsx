@@ -71,12 +71,7 @@ export default SelfClubs;
 
 
 
-// STRIPE_SECRET_KEY=sk_test_51PU40jP6Uda33limvCGNt0Ydh3uwySHn4MiTDvWooBTKIsj2NIHnOjLWQQY9nps4gtNyKCwJY1LcgaXywNFelkUL00xwCBlqt1
 
-// SITE_DOMAIN=http://localhost:5173
-
-
-// https://github.com/sajib593/club-server/security/secret-scanning/unblock-secret/36eEvFfLnd9EPzrTQ5i2ZGSRnIn
 
 
 
