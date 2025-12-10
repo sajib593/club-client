@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import useAxios from "../../hooks/useAxios";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
 
 
 const CreateClubs = () => {
@@ -46,6 +48,9 @@ const CreateClubs = () => {
     };
 
     return (
+        <>
+        <Navbar></Navbar>
+
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 p-6">
             <div className="backdrop-blur-xl bg-white/20 border border-white/30 rounded-2xl shadow-2xl w-full max-w-md p-8">
                 
@@ -141,6 +146,10 @@ const CreateClubs = () => {
                 </form>
             </div>
         </div>
+        
+        
+        <Footer></Footer>
+        </>
     );
 };
 

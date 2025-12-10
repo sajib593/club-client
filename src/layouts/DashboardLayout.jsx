@@ -1,7 +1,12 @@
 import { Link, NavLink, Outlet } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
+import useRole from "../hooks/useRole";
 
 const DashboardLayout = () => {
+
+
+  let {role} = useRole();
+  // console.log(role);
 
 
   return (

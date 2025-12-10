@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router";
 
 import Swal from "sweetalert2";
 import { AuthContext } from "../contexts/AuthContext";
+import useRole from "../hooks/useRole";
 // import loginImage from"./../assets/login.jpg"
 
 
@@ -10,6 +11,7 @@ const Navbar = () => {
 
 
   let {user,  logOut} = use(AuthContext);
+  let {role} = useRole();
 
 //   const [theme, setTheme] = useState("light");
 
@@ -62,15 +64,31 @@ const Navbar = () => {
 
                 <NavLink to='/'>Home</NavLink>
 
-                <NavLink to='/login'>Login</NavLink>
+                
+                <NavLink to='/register'>Register</NavLink>
+
+              <NavLink to='/dashboard/showAllEvents'>Events</NavLink>
+
+              <NavLink to='/createClubs'>CreateClubs</NavLink>
+
+                {role == "clubManager"&&
+
+                  <>
+                  
+                <NavLink to='/dashboard/selfClubs'>Managers- Club</NavLink>
+                  </>
+                
+              }
+                
+                
                 
 
-                <NavLink to='/register'>Register</NavLink>
-                
-                <NavLink to='/createClubs'>CreateClubs</NavLink>
-                <NavLink to='/dashboard/selfClubs'>Managers- Club</NavLink>
-                <NavLink to='/dashboard/showAllEvents'>Events</NavLink>
-                <NavLink to='/dashboard/allAdminClubs'>AllAdminClubs</NavLink>
+
+                {
+                  role == "admin" &&
+                   <NavLink to='/dashboard/allAdminClubs'>AllAdminClubs</NavLink>
+                }
+               
 
 
             </div>

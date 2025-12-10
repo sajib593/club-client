@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "./SocialLogin";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 
 
@@ -29,7 +31,10 @@ const Login = () => {
 
 
     return (
-       <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+      <>
+      
+        <Navbar></Navbar>
+         <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
             <h3 className="text-3xl text-center">Welcome back</h3>
             <p className='text-center'>Please Login</p>
             <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
@@ -59,6 +64,9 @@ const Login = () => {
             </form>
             <SocialLogin></SocialLogin>
         </div>
+
+      <Footer></Footer>
+      </>
     );
 };
 

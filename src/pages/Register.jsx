@@ -5,6 +5,8 @@ import axios from 'axios';
 import useAxiosSecure from '../hooks/useAxiosSecure';
 import useAuth from '../hooks/useAuth';
 import SocialLogin from './SocialLogin';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 
 const Register = () => {
@@ -70,7 +72,10 @@ const Register = () => {
     }
 
     return (
-        <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
+       <>
+    <Navbar></Navbar>
+
+ <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
             <h3 className="text-3xl text-center">Welcome to Zap Shift</h3>
             <p className='text-center'>Please Register</p>
             <form className="card-body" onSubmit={handleSubmit(handleRegistration)}>
@@ -124,6 +129,11 @@ const Register = () => {
             </form>
             <SocialLogin></SocialLogin>
         </div>
+
+
+
+<Footer></Footer>
+       </>
     );
 };
 
