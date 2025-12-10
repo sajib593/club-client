@@ -54,7 +54,7 @@ const Navbar = () => {
             <div className="">
                 {/* {user && user.email} */}
 
-                <h2 className='text-2xl font-bold'>Freelance Market</h2>
+                <h2 className='text-2xl font-bold'>Club Sphere</h2>
                 
             </div>
 

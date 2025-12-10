@@ -10,6 +10,8 @@ import ClubDetails from "../pages/Home/ClubDetails";
 import Payment from "../pages/Dashboard/Payment";
 import PaymentSuccess from "../pages/Dashboard/PaymentSuccess";
 import PaymentCancelled from "../pages/Dashboard/PaymentCancelled";
+import CreateEvents from "../pages/Events/CreateEvents";
+import SelfClubs from "../pages/Dashboard/OnlClubMembers/SelfClubs";
 
 
 
@@ -65,6 +67,16 @@ export const router = createBrowserRouter([
                 path: 'payment-canceled',
                 element: <PaymentCancelled></PaymentCancelled>
             },
+            //club mambers
+            {
+                path: 'createEvents',
+                element: <CreateEvents></CreateEvents>
+            },
+            {
+                path: 'selfClubs',
+                element: <SelfClubs></SelfClubs>
+            }
+
         ]
     }
 ])
