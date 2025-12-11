@@ -18,7 +18,9 @@ const SelfClubs = () => {
             return res.data;
         }
     });
-    console.log(selfClubs);
+    // console.log(selfClubs);
+
+    const approvedCount = selfClubs.filter(club => club.status === "approved").length;
 
 
     if (isLoading) return <Loading></Loading>
@@ -27,6 +29,9 @@ const SelfClubs = () => {
     return (
         <div className="w-full p-4">
   <h2 className="text-3xl font-bold mb-6 text-center">My Clubs</h2>
+  <h2 className="text-3xl font-bold mb-6 text-center">Here Total Clubs is : {selfClubs.length}</h2>
+  <h2 className="text-3xl font-bold mb-6 text-center">But you are managing only  : {approvedCount}</h2>
+  
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
