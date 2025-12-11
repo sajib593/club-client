@@ -50,12 +50,16 @@ const SelfClubs = () => {
         <div className="flex justify-between text-gray-600 text-sm mb-3 font-bold">
           <span>{selfClub.category}</span>
           <span>{selfClub.location}</span>
+          <span>{selfClub.status}</span>
         </div>
 
         {/* Button */}
-        <Link to={`/dashboard/createEvents/${selfClub._id}`} className="btn btn-primary w-full">
+        {
+          selfClub.status === "approved" && 
+          <Link to={`/dashboard/createEvents/${selfClub._id}`} className="btn btn-primary w-full">
           Make An Event
         </Link>
+        }
 
       </div>
     ))}

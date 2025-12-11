@@ -4,9 +4,9 @@ import ShowAllEvents from '../Events/ShowAllEvents';
 
 const Home = () => {
     return (
-        <div>
+        <div className='mt-10'>
             
-            <ClubCards></ClubCards>
+            <ClubCards limit={9}></ClubCards>
             <br /><br />
             <ShowAllEvents limit={5} UpComing={'UpComing'}></ShowAllEvents>
         </div>

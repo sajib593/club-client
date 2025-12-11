@@ -66,16 +66,22 @@ const Navbar = () => {
 
                 
                 <NavLink to='/register'>Register</NavLink>
+                
+              <NavLink to='/clubCards'>All-Clubs</NavLink>
 
               <NavLink to='/dashboard/showAllEvents'>Events</NavLink>
 
-              <NavLink to='/createClubs'>CreateClubs</NavLink>
+
+
+              
 
                 {role == "clubManager"&&
 
                   <>
                   
-                <NavLink to='/dashboard/selfClubs'>Managers- Club</NavLink>
+                <NavLink to='/dashboard/selfClubs'>Self-Clubs</NavLink>
+
+              <NavLink to='/createClubs'>CreateClubs</NavLink>
                   </>
                 
               }

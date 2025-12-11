@@ -4,8 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../../shared/Loading';
 import { motion } from "motion/react"
 import { Link } from 'react-router';
+import Navbar from '../../components/Navbar';
 
-const ClubCards = () => {
+
+const ClubCards = ({limit, navbar}) => {
 
 
     let axiosInstance = useAxios()
@@ -13,7 +15,8 @@ const ClubCards = () => {
      const { data: clubs = [], isLoading, isError } = useQuery({
         queryKey: ['allClubs'],
         queryFn: async () => {
-            const res = await axiosInstance.get('/allClubs');
+          let url = limit ? `/allClubs?limit=${limit}` : '/allClubs';
+            const res = await axiosInstance.get(url);
             return res.data;
         }
     });
@@ -25,6 +28,11 @@ const ClubCards = () => {
 
 
     return (
+       <>
+      {
+        navbar &&  <Navbar></Navbar>
+      }
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {
@@ -97,6 +105,10 @@ const ClubCards = () => {
             }
 
         </div>
+
+
+
+       </>
     );
 };
 

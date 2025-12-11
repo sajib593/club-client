@@ -15,7 +15,9 @@ const DashboardLayout = () => {
 
       {/* MAIN CONTENT */}
       <div className="drawer-content flex flex-col">
-        {/* Navbar */}
+
+        {/* Navbar --------------------*/}
+
         <nav className="navbar w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white shadow-md">
           <label
             htmlFor="my-drawer-4"
@@ -43,13 +45,24 @@ const DashboardLayout = () => {
           </h2>
         </nav>
 
-        {/* PAGE CONTENT */}
+
+
+
+
+
+
+
+        {/* ------------PAGE CONTENT --------------*/}
         <div className="p-4">
           <Outlet />
         </div>
       </div>
 
-      {/* SIDEBAR */}
+
+
+
+
+      {/*-----------------SIDEBAR ---------------*/}
       <div className="drawer-side">
         <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
 
@@ -88,6 +101,7 @@ const DashboardLayout = () => {
 
 
             {/* Club members ------   SelfClubs */}
+
             <li>
               <NavLink
                 to="/dashboard/selfClubs"
@@ -106,6 +120,11 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">SelfClubs</span>
               </NavLink>
             </li>
+
+
+
+            {/*----------- All Events -------------*/}
+
             <li>
               <NavLink
                 to="/dashboard/showAllEvents"
@@ -126,7 +145,15 @@ const DashboardLayout = () => {
             </li>
 
 
-            <li>
+
+
+              {/* --------------allAdminClubs --------*/}
+          
+          {
+            role == "admin" &&
+            <>
+
+              <li>
               <NavLink
                 to="/dashboard/allAdminClubs"
                 className={({ isActive }) =>
@@ -144,6 +171,9 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">All Admin Clubs</span>
               </NavLink>
             </li>
+
+            </>
+          }
 
 
 

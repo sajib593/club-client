@@ -15,6 +15,7 @@ import SelfClubs from "../pages/Dashboard/OnlClubMembers/SelfClubs";
 import ShowAllEvents from "../pages/Events/ShowAllEvents";
 import SingleEventDetails from "../pages/Events/SingleEventDetails";
 import ErrorPage from "../pages/ErrorPage";
+import ClubCards from "../pages/Home/ClubCards";
 
 
 
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
     {
         path: 'createClubs',
         element: <CreateClubs></CreateClubs>
+    },
+    {
+        path: 'clubCards',
+        element: <ClubCards navbar={'navbar'}></ClubCards>
     },
 
     {
