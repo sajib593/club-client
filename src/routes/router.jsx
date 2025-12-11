@@ -14,6 +14,7 @@ import CreateEvents from "../pages/Events/CreateEvents";
 import SelfClubs from "../pages/Dashboard/OnlClubMembers/SelfClubs";
 import ShowAllEvents from "../pages/Events/ShowAllEvents";
 import SingleEventDetails from "../pages/Events/SingleEventDetails";
+import ErrorPage from "../pages/ErrorPage";
 
 
 
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
     {
         path:'/',
         element: <RootLayout></RootLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
 
         children:[
             {

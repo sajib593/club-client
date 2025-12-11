@@ -1,11 +1,14 @@
 import React from 'react';
 import ClubCards from './ClubCards';
+import ShowAllEvents from '../Events/ShowAllEvents';
 
 const Home = () => {
     return (
         <div>
-            <h2 className='text-6xl'>this is home </h2>
+            
             <ClubCards></ClubCards>
+            <br /><br />
+            <ShowAllEvents limit={5} UpComing={'UpComing'}></ShowAllEvents>
         </div>
     );
 };

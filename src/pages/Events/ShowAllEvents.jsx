@@ -5,14 +5,16 @@ import Loading from '../../shared/Loading';
 import dayjs from 'dayjs';
 import { Link } from 'react-router';
 
-const ShowAllEvents = () => {
+const ShowAllEvents = ({limit, UpComing}) => {
 
     let axiosInstance = useAxios();
 
      let { data: showAllEvents = [], isLoading, isError } = useQuery({
-        queryKey: ['ShowAllEvents'],
+        queryKey: ['ShowAllEvents', limit],
+        
         queryFn: async () => {
-            let res = await axiosInstance.get('/showAllEvents');
+          let url = limit ? `/showAllEvents?limit=${limit}` : '/showAllEvents';
+            let res = await axiosInstance.get(url);
             return res.data;
         }
     });
@@ -23,9 +25,14 @@ const ShowAllEvents = () => {
 
     return (
         <div className="p-6">
-      <h2 className="text-3xl font-bold text-center mb-6 text-indigo-600">
-        All Events
-      </h2>
+      
+        UpComing ?
+        <h2 className="text-3xl font-bold text-center mb-6 text-indigo-600">
+          {UpComing? `${UpComing} Events` : 'All Events'}
+        
+      </h2>     
+
+    
 
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white rounded-lg shadow-lg">
