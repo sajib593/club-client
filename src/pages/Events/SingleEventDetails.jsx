@@ -5,6 +5,8 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../../shared/Loading';
 import dayjs from 'dayjs';
 import relativeTime from "dayjs/plugin/relativeTime";
+import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 dayjs.extend(relativeTime);
 
 
@@ -13,6 +15,7 @@ const SingleEventDetails = () => {
      let axiosInstance = useAxios();
      let {id} = useParams();
     console.log(id);
+    let {user} = useAuth();
 
      let { data: singleEventDetails = {}, isLoading, isError } = useQuery({
         queryKey: ['singleEventDetails'],
@@ -22,9 +25,35 @@ const SingleEventDetails = () => {
         }
     });
 
+
+    let handleEventRegister=()=>{
+       console.log("regis", singleEventDetails._id);
+
+       let eventRegisterData={
+
+        eventId : singleEventDetails._id,
+        userEmail : user?.email,
+        clubId : singleEventDetails.clubId,
+        
+       }
+
+
+         axiosInstance.post('/eventRegister', eventRegisterData)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    Swal.fire('register created in the database');
+                                }
+                                else if (res.data.message ===   "Already registered") {
+                                  Swal.fire("You have already registered for this event.");
+    }
+                            })
+
+    }
+
+
     if(isLoading) return<Loading></Loading>
     if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
-    console.log(singleEventDetails);
+    // console.log(singleEventDetails);
 
 
     
@@ -60,7 +89,10 @@ const SingleEventDetails = () => {
     Created {dayjs(singleEventDetails.createdAt).format("DD MMM YYYY, hh:mm A")} (
     {dayjs(singleEventDetails.createdAt).fromNow()})
   </p>
+
 )}
+<br />
+<button onClick={handleEventRegister} className='btn btn-primary'>Register Please</button>
 
           
 
