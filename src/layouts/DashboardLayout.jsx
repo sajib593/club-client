@@ -100,7 +100,7 @@ const DashboardLayout = () => {
 
 
 
-            {/* Club members ------   SelfClubs */}
+            {/* Club manager ------   SelfClubs */}
 
             <li>
               <NavLink
@@ -118,6 +118,29 @@ const DashboardLayout = () => {
               >
                 <CiDeliveryTruck className="text-xl" />
                 <span className="is-drawer-close:hidden">SelfClubs</span>
+              </NavLink>
+            </li>
+
+
+
+            {/* Club manager ------   selfClubMembers */}
+
+            <li>
+              <NavLink
+                to="/dashboard/selfClubMembers"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="SelfClubMembers"
+              >
+                <CiDeliveryTruck className="text-xl" />
+                <span className="is-drawer-close:hidden">SelfClubMembers</span>
               </NavLink>
             </li>
 
