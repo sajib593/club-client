@@ -17,6 +17,7 @@ import SingleEventDetails from "../pages/Events/SingleEventDetails";
 import ErrorPage from "../pages/ErrorPage";
 import ClubCards from "../pages/Home/ClubCards";
 import SelfClubMembers from "../pages/Dashboard/OnlClubMembers/SelfClubMembers";
+import SelfEventList from "../pages/Dashboard/SelfEventList";
 
 
 
@@ -99,6 +100,11 @@ export const router = createBrowserRouter([
             {
                 path: 'selfClubMembers',
                 element: <SelfClubMembers></SelfClubMembers>
+            },
+            // manager
+            {
+                path: 'selfEventList',
+                element: <SelfEventList></SelfEventList>
             }
 
         ]
