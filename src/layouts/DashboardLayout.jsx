@@ -254,6 +254,27 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
 
+
+             {/* // allAdminPayments --------------------  */}
+              <li>
+              <NavLink
+                to="/dashboard/allAdminPayments"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="All Payments"
+              >
+                <CiDeliveryTruck className="text-xl" />
+                <span className="is-drawer-close:hidden">All Payments</span>
+              </NavLink>
+            </li>
+
             </>
           }
 

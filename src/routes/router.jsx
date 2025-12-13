@@ -20,6 +20,7 @@ import SelfClubMembers from "../pages/Dashboard/OnlClubMembers/SelfClubMembers";
 import SelfEventList from "../pages/Dashboard/SelfEventList";
 import UpdateClubs from "../pages/Dashboard/UpdateClubs";
 import AllAdminUsers from "../pages/Dashboard/Admin/AllAdminUsers";
+import AllAdminPayments from "../pages/Dashboard/Admin/AllAdminPayments";
 
 
 
@@ -117,7 +118,12 @@ export const router = createBrowserRouter([
             {
                 path: 'allAdminUsers',
                 element: <AllAdminUsers></AllAdminUsers>
-            }
+            },
+            // admin ------
+            {
+                path: 'allAdminPayments',
+                element: <AllAdminPayments></AllAdminPayments>
+            },
 
         ]
     }
