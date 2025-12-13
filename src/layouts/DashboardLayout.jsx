@@ -1,6 +1,9 @@
 import { Link, NavLink, Outlet } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
 import useRole from "../hooks/useRole";
+import { MdEmojiEvents, MdOutlineEmojiEvents, MdPayment } from "react-icons/md";
+import { FaRegUser, FaUsers } from "react-icons/fa";
+import { GiClubs } from "react-icons/gi";
 
 const DashboardLayout = () => {
 
@@ -120,7 +123,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="SelfClubs"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <GiClubs className="text-xl" />
                 <span className="is-drawer-close:hidden">SelfClubs</span>
               </NavLink>
             </li>
@@ -143,7 +146,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="SelfClubMembers"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <FaRegUser className="text-xl" />
                 <span className="is-drawer-close:hidden">SelfClubMembers</span>
               </NavLink>
             </li>
@@ -163,7 +166,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="SelfEventList"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <MdOutlineEmojiEvents className="text-xl" />
                 <span className="is-drawer-close:hidden">SelfEventList</span>
               </NavLink>
             </li>
@@ -196,7 +199,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="Events"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <MdEmojiEvents className="text-xl" />
                 <span className="is-drawer-close:hidden">Events</span>
               </NavLink>
             </li>
@@ -224,7 +227,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="All Admin Clubs"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <GiClubs className="text-xl" />
                 <span className="is-drawer-close:hidden">All Admin Clubs</span>
               </NavLink>
             </li>
@@ -249,7 +252,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="All Admin Users"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <FaUsers className="text-xl" />
                 <span className="is-drawer-close:hidden">All Admin Users</span>
               </NavLink>
             </li>
@@ -270,7 +273,7 @@ const DashboardLayout = () => {
                 }
                 data-tip="All Payments"
               >
-                <CiDeliveryTruck className="text-xl" />
+                <MdPayment className="text-xl" />
                 <span className="is-drawer-close:hidden">All Payments</span>
               </NavLink>
             </li>
@@ -280,25 +283,6 @@ const DashboardLayout = () => {
 
 
          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
