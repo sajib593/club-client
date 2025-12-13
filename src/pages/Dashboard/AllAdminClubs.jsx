@@ -59,7 +59,7 @@ const AllAdminClubs = () => {
                             <th>#</th>
                             <th>Club</th>
                             <th>Email</th>
-                            <th>Category</th>
+                            <th>Fee</th>
                             <th>Status</th>
                             <th className="text-center">Actions</th>
                         </tr>
@@ -72,7 +72,7 @@ const AllAdminClubs = () => {
                                     <th>{index + 1}</th>
                                     <td className="font-semibold">{clubs.clubName}</td>
                                     <td>{clubs.managerEmail}</td>
-                                    <td>{clubs.category}</td>
+                                    <td>{clubs.membershipFee}</td>
 
                                     <td>
                                         <span

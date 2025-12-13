@@ -22,7 +22,7 @@ const UpdateClubs = () => {
     },
     enabled: !!id, 
   });
-console.log(club);
+// console.log(club);
   /* =======================
       UPDATE CLUB
   ======================= */

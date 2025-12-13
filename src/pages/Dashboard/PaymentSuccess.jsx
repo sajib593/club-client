@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router';
 import useAxiosSecure from '../../hooks/useAxiosSecure';
 
@@ -6,27 +6,45 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 const PaymentSuccess = () => {
 
     let [searchParams] = useSearchParams('session_id');
-    let [paymentInfo, setPaymentInfo] = useState({});
     let sessionId = searchParams.get('session_id');
-    console.log(sessionId);
-
     let axiosSecure = useAxiosSecure();
+    const calledRef = useRef(false);
 
-    useEffect(()=>{
+    let [paymentInfo, setPaymentInfo] = useState({});
+    // console.log(sessionId);
 
-        if(sessionId){
-            axiosSecure.patch(`/payment-success?session_id=${sessionId}`)
-            .then(res=>{
-                console.log(res.data);
-                setPaymentInfo({
-                    transactionId: res.data.transactionId,
-                    // trackingId: res.data.trackingId,
-                })
 
-            })
-        }
+     useEffect(() => {
+    if (!sessionId || calledRef.current) return;
 
-    }, [sessionId, axiosSecure])
+    calledRef.current = true; //  block second call
+
+    axiosSecure
+      .patch(`/payment-success?session_id=${sessionId}`)
+      .then(res => {
+        setPaymentInfo({
+          transactionId: res.data.transactionId,
+        });
+      });
+
+  }, [sessionId, axiosSecure]);
+
+
+    // useEffect(()=>{
+
+    //     if(sessionId){
+    //         axiosSecure.patch(`/payment-success?session_id=${sessionId}`)
+    //         .then(res=>{
+    //             console.log(res.data);
+    //             setPaymentInfo({
+    //                 transactionId: res.data.transactionId,
+    //                 // trackingId: res.data.trackingId,
+    //             })
+
+    //         })
+    //     }
+
+    // }, [sessionId, axiosSecure])
 
     return (
         <div>

@@ -102,7 +102,11 @@ const DashboardLayout = () => {
 
             {/* Club manager ------   SelfClubs */}
 
-            <li>
+            {
+              role == "clubManager" &&
+              <>
+
+  <li>
               <NavLink
                 to="/dashboard/selfClubs"
                 className={({ isActive }) =>
@@ -167,6 +171,14 @@ const DashboardLayout = () => {
 
 
 
+              </>
+            }
+
+          
+
+
+
+
 
             {/*----------- All Events -------------*/}
 
@@ -217,8 +229,39 @@ const DashboardLayout = () => {
               </NavLink>
             </li>
 
+
+
+
+
+
+             {/* // allAdminUsers --------------------  */}
+              <li>
+              <NavLink
+                to="/dashboard/allAdminUsers"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="All Admin Users"
+              >
+                <CiDeliveryTruck className="text-xl" />
+                <span className="is-drawer-close:hidden">All Admin Users</span>
+              </NavLink>
+            </li>
+
             </>
           }
+
+
+         
+
+
+
 
 
 

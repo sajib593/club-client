@@ -19,6 +19,7 @@ import ClubCards from "../pages/Home/ClubCards";
 import SelfClubMembers from "../pages/Dashboard/OnlClubMembers/SelfClubMembers";
 import SelfEventList from "../pages/Dashboard/SelfEventList";
 import UpdateClubs from "../pages/Dashboard/UpdateClubs";
+import AllAdminUsers from "../pages/Dashboard/Admin/AllAdminUsers";
 
 
 
@@ -110,6 +111,12 @@ export const router = createBrowserRouter([
             {
                 path: 'updateClubs/:id',
                 element: <UpdateClubs></UpdateClubs>
+            },
+
+            // admin ------
+            {
+                path: 'allAdminUsers',
+                element: <AllAdminUsers></AllAdminUsers>
             }
 
         ]
