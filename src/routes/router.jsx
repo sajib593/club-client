@@ -21,6 +21,7 @@ import SelfEventList from "../pages/Dashboard/SelfEventList";
 import UpdateClubs from "../pages/Dashboard/UpdateClubs";
 import AllAdminUsers from "../pages/Dashboard/Admin/AllAdminUsers";
 import AllAdminPayments from "../pages/Dashboard/Admin/AllAdminPayments";
+import MemberOverview from "../pages/Dashboard/Member/MemberOverview";
 
 
 
@@ -124,6 +125,12 @@ export const router = createBrowserRouter([
                 path: 'allAdminPayments',
                 element: <AllAdminPayments></AllAdminPayments>
             },
+
+            // member
+            {
+                path: 'memberOverview',
+                element: <MemberOverview></MemberOverview>
+            }
 
         ]
     }
