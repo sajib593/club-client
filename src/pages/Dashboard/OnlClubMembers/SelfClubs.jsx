@@ -65,6 +65,12 @@ const SelfClubs = () => {
           Make An Event
         </Link>
         }
+        <br /> <br />
+        
+          <Link to={`/dashboard/updateClubs/${selfClub._id}`} className="btn btn-secondary w-full">
+          Update This Club
+        </Link>
+        
 
       </div>
     ))}
