@@ -1,9 +1,10 @@
 import { Link, NavLink, Outlet } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
 import useRole from "../hooks/useRole";
-import { MdEmojiEvents, MdOutlineEmojiEvents, MdPayment } from "react-icons/md";
+import { MdEmojiEvents, MdOutlineEmojiEvents, MdOutlineEventNote, MdPayment, MdRememberMe } from "react-icons/md";
 import { FaRegUser, FaUsers } from "react-icons/fa";
 import { GiClubs } from "react-icons/gi";
+import { RiPokerClubsFill } from "react-icons/ri";
 
 const DashboardLayout = () => {
 
@@ -305,8 +306,73 @@ const DashboardLayout = () => {
                 }
                 data-tip="Member Overview"
               >
-                <MdPayment className="text-xl" />
+                <MdRememberMe className="text-xl" />
                 <span className="is-drawer-close:hidden">Member-Overview</span>
+              </NavLink>
+            </li>
+
+
+            {/* ----------------userActiveClubs---------  */}
+             <li>
+              <NavLink
+                to="/dashboard/userActiveClubs"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="User Clubs"
+              >
+                <RiPokerClubsFill className="text-xl" />
+                <span className="is-drawer-close:hidden">User Active Clubs</span>
+              </NavLink>
+            </li>
+
+
+
+            {/* ----------------userRegisteredEvents---------  */}
+             <li>
+              <NavLink
+                to="/dashboard/userRegisteredEvents"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="User Events"
+              >
+                <MdOutlineEventNote className="text-xl" />
+                <span className="is-drawer-close:hidden">User Events</span>
+              </NavLink>
+            </li>
+
+
+
+            {/* ----------------userPaymentHistory---------  */}
+             <li>
+              <NavLink
+                to="/dashboard/userPaymentHistory"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="User Payments"
+              >
+                <MdPayment className="text-xl" />
+                <span className="is-drawer-close:hidden">User Payments</span>
               </NavLink>
             </li>
 

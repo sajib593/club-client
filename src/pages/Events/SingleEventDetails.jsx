@@ -27,13 +27,14 @@ const SingleEventDetails = () => {
 
 
     let handleEventRegister=()=>{
-       console.log("regis", singleEventDetails._id);
+       console.log("regis", singleEventDetails);
 
        let eventRegisterData={
 
         eventId : singleEventDetails._id,
         userEmail : user?.email,
         clubId : singleEventDetails.clubId,
+        clubName : singleEventDetails.title,
         
        }
 

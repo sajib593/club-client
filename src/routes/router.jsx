@@ -22,6 +22,9 @@ import UpdateClubs from "../pages/Dashboard/UpdateClubs";
 import AllAdminUsers from "../pages/Dashboard/Admin/AllAdminUsers";
 import AllAdminPayments from "../pages/Dashboard/Admin/AllAdminPayments";
 import MemberOverview from "../pages/Dashboard/Member/MemberOverview";
+import UserActiveClubs from "../pages/Dashboard/User/UserActiveClubs";
+import UsersEvents from "../pages/Dashboard/User/UsersEvents";
+import UserPaymentHistory from "../pages/Dashboard/User/UserPaymentHistory";
 
 
 
@@ -130,6 +133,21 @@ export const router = createBrowserRouter([
             {
                 path: 'memberOverview',
                 element: <MemberOverview></MemberOverview>
+            },
+            //member
+            {
+                path: 'userActiveClubs',
+                element: <UserActiveClubs></UserActiveClubs>
+            },
+            //member
+            {
+                path: 'userRegisteredEvents',
+                element: <UsersEvents></UsersEvents>
+            },
+            //member
+            {
+                path: 'userPaymentHistory',
+                element: <UserPaymentHistory></UserPaymentHistory>
             }
 
         ]
