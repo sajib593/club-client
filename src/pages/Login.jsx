@@ -4,69 +4,125 @@ import useAuth from "../hooks/useAuth";
 import SocialLogin from "./SocialLogin";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Swal from "sweetalert2";
 
 
 
 const Login = () => {
 
-
-     const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { signInUser } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
 
-
     const handleLogin = (data) => {
-        console.log('form data', data);
         signInUser(data.email, data.password)
             .then(result => {
-                console.log(result.user)
-                navigate(location?.state || '/')
+                console.log(result.user);
+
+                Swal.fire({
+                    icon: "success",
+                    title: "Login Successful 🎉",
+                    text: "Welcome back to Club Sphere!",
+                    timer: 1600,
+                    showConfirmButton: false
+                });
+
+                navigate(location?.state || '/');
             })
             .catch(error => {
-                console.log(error)
-            })
-    }
+                console.log(error);
 
-
+                Swal.fire({
+                    icon: "error",
+                    title: "Login Failed ❌",
+                    text: error.message
+                });
+            });
+    };
 
     return (
-      <>
-      
-        <Navbar></Navbar>
-         <div className="card bg-base-100 w-full mx-auto max-w-sm shrink-0 shadow-2xl">
-            <h3 className="text-3xl text-center">Welcome back</h3>
-            <p className='text-center'>Please Login</p>
-            <form className="card-body" onSubmit={handleSubmit(handleLogin)}>
-                <fieldset className="fieldset">
-                    {/* email field */}
-                    <label className="label">Email</label>
-                    <input type="email" {...register('email', { required: true })} className="input" placeholder="Email" />
-                    {
-                        errors.email?.type === 'required' && <p className='text-red-500'>Email is required</p>
-                    }
+        <>
+            <Navbar />
 
-                    {/* password field */}
-                    <label className="label">Password</label>
-                    <input type="password" {...register('password', { required: true, minLength: 6 })} className="input" placeholder="Password" />
-                    {
-                        errors.password?.type === 'minLength' && <p className='text-red-500'>Password must be 6 characters  or longer </p>
-                    }
+            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 px-4">
+                <div className="card w-full max-w-md bg-white shadow-xl rounded-2xl">
 
+                    <div className="text-center pt-8">
+                        <h3 className="text-3xl font-bold text-indigo-600">
+                            Welcome Back
+                        </h3>
+                        <p className="text-gray-500 mt-2">
+                            Login to your account
+                        </p>
+                    </div>
 
-                    <div><a className="link link-hover">Forgot password?</a></div>
-                    <button className="btn btn-neutral mt-4">Login</button>
-                </fieldset>
-                <p>New to Zap Shift <Link
-                    state={location.state}
-                    className='text-blue-400 underline'
-                    to="/register">Register</Link></p>
-            </form>
-            <SocialLogin></SocialLogin>
-        </div>
+                    <form
+                        className="card-body space-y-4"
+                        onSubmit={handleSubmit(handleLogin)}
+                    >
+                        {/* Email */}
+                        <div>
+                            <label className="label font-medium">Email</label>
+                            <input
+                                type="email"
+                                {...register('email', { required: true })}
+                                className="input input-bordered w-full focus:border-indigo-500"
+                                placeholder="Email address"
+                            />
+                            {errors.email && (
+                                <p className="text-sm text-red-500 mt-1">
+                                    Email is required
+                                </p>
+                            )}
+                        </div>
 
-      <Footer></Footer>
-      </>
+                        {/* Password */}
+                        <div>
+                            <label className="label font-medium">Password</label>
+                            <input
+                                type="password"
+                                {...register('password', { required: true, minLength: 6 })}
+                                className="input input-bordered w-full focus:border-indigo-500"
+                                placeholder="Password"
+                            />
+                            {errors.password?.type === 'minLength' && (
+                                <p className="text-sm text-red-500 mt-1">
+                                    Password must be 6 characters or longer
+                                </p>
+                            )}
+                        </div>
+
+                        <div className="text-right">
+                            <a className="text-sm text-indigo-500 hover:underline cursor-pointer">
+                                Forgot password?
+                            </a>
+                        </div>
+
+                        <button className="btn bg-indigo-600 hover:bg-indigo-700 text-white w-full mt-2">
+                            Login
+                        </button>
+
+                        <p className="text-center text-sm text-gray-600">
+                            New to Club Sphere?{" "}
+                            <Link
+                                to="/register"
+                                state={location.state}
+                                className="text-indigo-600 font-medium hover:underline"
+                            >
+                                Register
+                            </Link>
+                        </p>
+                    </form>
+
+                    <div className="px-6 pb-6">
+                        <SocialLogin />
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
+        </>
     );
 };
 
