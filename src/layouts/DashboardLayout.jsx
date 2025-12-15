@@ -5,6 +5,7 @@ import { MdEmojiEvents, MdOutlineEmojiEvents, MdOutlineEventNote, MdPayment, MdR
 import { FaRegUser, FaUsers } from "react-icons/fa";
 import { GiClubs } from "react-icons/gi";
 import { RiPokerClubsFill } from "react-icons/ri";
+import Navbar from "./../components/Navbar";
 
 const DashboardLayout = () => {
 
@@ -14,8 +15,14 @@ const DashboardLayout = () => {
 
 
   return (
+    <div className='max-w-7xl mx-auto'>
+    <Navbar></Navbar>
+    <br />
+
     <div className="drawer lg:drawer-open max-w-7xl mx-auto">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+
+      
 
       {/* MAIN CONTENT */}
       <div className="drawer-content flex flex-col">
@@ -412,6 +419,8 @@ const DashboardLayout = () => {
           </ul>
         </div>
       </div>
+    </div>
+    
     </div>
   );
 };

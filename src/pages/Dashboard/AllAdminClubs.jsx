@@ -46,6 +46,44 @@ const AllAdminClubs = () => {
         updateRiderStatus(clubs, 'rejected')
     }
 
+    
+
+    let handleClubDelete = (clubId) => {
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "This club will be permanently deleted!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#3085d6',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axiosSecure.delete(`/allAdminClubs/${clubId}`)
+        .then(res => {
+          if (res.data.deletedCount > 0) {
+            refetch(); // 🔁 Refresh the table
+            Swal.fire({
+              icon: 'success',
+              title: 'Deleted!',
+              text: 'Club has been deleted.',
+              timer: 1500,
+              showConfirmButton: false
+            });
+          }
+        })
+        .catch(err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: `Failed to delete the club ${err}.`,
+          });
+        });
+    }
+  });
+}
+
+
     return (
         <div>
             <h2 className="text-4xl font-bold mb-6">
@@ -88,9 +126,7 @@ const AllAdminClubs = () => {
 
                                     <td className="flex gap-3 justify-center">
 
-                                        <button className="btn btn-sm bg-gray-200 hover:bg-gray-300">
-                                            <FiEye size={18} />
-                                        </button>
+                                        
 
                                         <button
                                             onClick={() => handleApproval(clubs)}
@@ -106,7 +142,7 @@ const AllAdminClubs = () => {
                                             <FcDisapprove size={30}/>
                                         </button>
 
-                                        <button className="btn btn-sm bg-red-200 hover:bg-red-300">
+                                        <button onClick={()=>handleClubDelete(clubs._id)} className="btn btn-sm bg-red-200 hover:bg-red-300">
                                             <MdDeleteForever size={20} />
                                         </button>
 

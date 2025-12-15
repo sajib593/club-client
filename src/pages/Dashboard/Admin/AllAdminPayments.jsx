@@ -1,6 +1,16 @@
 import React from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from 'recharts';
+
 
 const AllAdminPayments = () => {
 
@@ -23,6 +33,21 @@ const AllAdminPayments = () => {
   if (isError)
     return <p className="text-center text-red-500">Failed to load payments</p>;
 
+   // 🔹 Club-wise total payment (for chart)
+  const chartData = Object.values(
+    allPayments.reduce((acc, payment) => {
+      if (!acc[payment.clubName]) {
+        acc[payment.clubName] = {
+          clubName: payment.clubName,
+          amount: 0
+        };
+      }
+      acc[payment.clubName].amount += payment.amount;
+      return acc;
+    }, {})
+  );
+
+
   
 
 console.log(allPayments);
@@ -36,6 +61,31 @@ console.log(allPayments);
         Total Payments: {totalPayment} USD
       </h2>
 
+       {/* 🔥 Chart Section */}
+      <div className="bg-white p-6 rounded-xl shadow-md">
+        <h3 className="text-lg font-semibold mb-4 text-center">
+          Club-wise Payment Summary
+        </h3>
+
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart data={chartData}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="clubName" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="amount" fill="#6366F1" radius={[6, 6, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+
+
+
+
+      {/* 🔹 Table Section */}
+      <br /><br />
+
+      <h1 className='text-3xl font-bold text-center'>See All Payment History</h1>
+      <br />
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full">
           <thead>

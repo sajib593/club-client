@@ -1,12 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const AllAdminUsers = () => {
 
     let axiosSecure = useAxiosSecure();
 
-     const {data: allAdminUsers = [], isLoading, isError} = useQuery({
+     const {data: allAdminUsers = [], isLoading, isError ,refetch} = useQuery({
     queryKey: ["allAdminUsers"],
     queryFn: async () => {
       const res = await axiosSecure.get('/allAdminUsers');
@@ -15,7 +16,52 @@ const AllAdminUsers = () => {
      
   });
 
-  console.log(allAdminUsers);
+  // console.log(allAdminUsers);
+
+
+// let handleChangeRole = (userId, role) => {
+//   console.log(userId, role);
+
+//   axiosSecure.patch('/changeUserRole', { userId, role })
+//     .then(res => {
+//       console.log(res.data); // ✅ correct
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// };
+
+
+const changeRoleMutation = useMutation({
+  mutationFn: async ({ userId, role }) => {
+    const res = await axiosSecure.patch('/changeUserRole', { userId, role });
+    return res.data;
+  },
+
+  onSuccess: () => {
+    Swal.fire({
+      icon: "success",
+      title: "Role Updated",
+      text: "User role updated successfully",
+      timer: 1200,
+      showConfirmButton: false
+    });
+
+    // ✅ always refetch (no condition)
+    refetch();
+  },
+
+  onError: () => {
+    Swal.fire("Error", "Failed to update role", "error");
+  }
+});
+
+
+const handleChangeRole = (userId, role) => {
+  changeRoleMutation.mutate({ userId, role });
+};
+
+
 
 
 
@@ -38,6 +84,7 @@ const AllAdminUsers = () => {
               <th>Photo</th>
               <th>Name</th>
               <th>Email</th>
+              <th>Change-Role</th>
               <th>Role</th>
               <th>Joined</th>
             </tr>
@@ -58,6 +105,30 @@ const AllAdminUsers = () => {
 
                 <td>{user.displayName}</td>
                 <td>{user.email}</td>
+
+
+                {/* chang the role ------------------------ 
+                 */}
+
+
+<td>
+  <select
+    defaultValue={user.role}   // ✅ controlled value
+    onChange={(e) => handleChangeRole(user._id, e.target.value)}
+    className="select select-bordered select-sm w-full max-w-[140px]"
+    disabled={changeRoleMutation.isPending}
+  >
+    <option value="member">Member</option>
+    <option value="clubManager">Club Manager</option>
+    <option value="admin">Admin</option>
+  </select>
+</td>
+
+
+ 
+
+                {/* --------------------------------------- */}
+
 
                 <td>
                   <span className={`badge ${
