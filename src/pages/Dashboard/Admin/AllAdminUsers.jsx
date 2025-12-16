@@ -1,14 +1,17 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/useAuth";
 
 
 const AllAdminUsers = () => {
 
     let axiosSecure = useAxiosSecure();
+    let {user, loading} = useAuth();
 
      const {data: allAdminUsers = [], isLoading, isError ,refetch} = useQuery({
     queryKey: ["allAdminUsers"],
+    enabled: !loading && !!user, // 🔥 WAIT until user ready
     queryFn: async () => {
       const res = await axiosSecure.get('/allAdminUsers');
       return res.data;
@@ -68,7 +71,7 @@ const handleChangeRole = (userId, role) => {
     if (isLoading) return <p className="text-center">Loading...</p>;
   if (isError)
     return <p className="text-center text-red-500">Failed to load club</p>;
-
+if (loading) return <p className="text-center">Foading...</p>;
 
     return (
         <div className="p-6">

@@ -3,18 +3,18 @@ import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import { FcApproval } from "react-icons/fc";
 import { FcDisapprove } from "react-icons/fc";
-// New icons (modern look)
-import { FiEye } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
-import { MdOutlinePersonRemove } from "react-icons/md";
-import { MdOutlinePersonAddAlt } from "react-icons/md";
+import useAuth from '../../hooks/useAuth';
+import Loading from '../../shared/Loading';
 
 const AllAdminClubs = () => {
 
     let axiosSecure = useAxiosSecure();
+    let {user, loading} = useAuth();
 
     let { data: allAdminClubs = [], refetch } = useQuery({
         queryKey: ['allAdminClubs'],
+        enabled: !loading && !!user, // 🔥 WAIT until user ready
         queryFn: async () => {
             let res = await axiosSecure.get('/allAdminClubs');
             return res.data;
@@ -82,6 +82,8 @@ const AllAdminClubs = () => {
     }
   });
 }
+
+if(loading) return <Loading></Loading>;
 
 
     return (

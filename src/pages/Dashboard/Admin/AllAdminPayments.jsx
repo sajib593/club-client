@@ -10,15 +10,19 @@ import {
   ResponsiveContainer,
   CartesianGrid
 } from 'recharts';
+import useAuth from '../../../hooks/useAuth';
+import Loading from '../../../shared/Loading';
 
 
 const AllAdminPayments = () => {
 
     let axiosSecure = useAxiosSecure();
+    let {user, loading} = useAuth();
 
    const {
     data: allPayments = [], isLoading, isError} = useQuery({
     queryKey: ['allPayments'],
+    enabled: !loading && !!user, // 🔥 WAIT until user ready
     queryFn: async () => {
       const res = await axiosSecure.get('/allAdminPayments');
       return res.data;
@@ -29,7 +33,10 @@ const AllAdminPayments = () => {
   const totalPayment = allPayments.reduce((sum, payment) => sum + payment.amount, 0);
 
 
-   if (isLoading) return <p className="text-center">Loading...</p>;
+   if (isLoading) return <div className="flex items-center justify-center h-screen">
+      <progress className="progress w-56"></progress> </div>
+
+      
   if (isError)
     return <p className="text-center text-red-500">Failed to load payments</p>;
 
@@ -48,7 +55,7 @@ const AllAdminPayments = () => {
   );
 
 
-  
+  if (loading) return <Loading></Loading>;
 
 console.log(allPayments);
 

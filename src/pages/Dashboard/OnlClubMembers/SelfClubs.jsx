@@ -8,11 +8,12 @@ import { Link } from 'react-router';
 const SelfClubs = () => {
 
     let axiosSecure = useAxiosSecure();
-    let {user} = useAuth();
+    let {user, loading} = useAuth();
         // console.log(user?.email);
 
      const { data: selfClubs = [], isLoading, isError } = useQuery({
         queryKey: ['selfClubs', user?.email],
+        enabled: !loading && !! user,
         queryFn: async () => {
             const res = await axiosSecure.get(`/selfClubs?email=${user?.email}`);
             return res.data;

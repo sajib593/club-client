@@ -4,16 +4,17 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import UpdateEventModal from "./OnlClubMembers/UpdateEventModal";
+import Loading from "../../shared/Loading";
 
 
 const SelfEventList = () => {
 
     const axiosSecure = useAxiosSecure();
-    const { user } = useAuth();
+    const { user, loading } = useAuth();
     const [selectedEvent, setSelectedEvent] = useState(null);
 
     // 🔹 Load Events using React Query
-    const { data: events = [], refetch } = useQuery({
+    const { data: events = [], refetch, isLoading } = useQuery({
         queryKey: ["selfEventList", user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
@@ -49,8 +50,9 @@ const SelfEventList = () => {
         });
     };
 
+    if(isLoading) return <Loading></Loading>
 
-    
+    if (loading) return <div className="flex items-center justify-center h-screen"> </div>
 
 
     return (
