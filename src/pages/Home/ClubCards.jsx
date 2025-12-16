@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useAxios from '../../hooks/useAxios';
 import { useQuery } from '@tanstack/react-query';
-import Loading from '../../shared/Loading';
 import { motion } from "motion/react"
 import { Link } from 'react-router';
 import Navbar from '../../components/Navbar';
@@ -10,20 +9,30 @@ import Navbar from '../../components/Navbar';
 const ClubCards = ({limit, navbar}) => {
 
 
-    let axiosInstance = useAxios()
+    let axiosInstance = useAxios();
+    const [search, setSearch] = useState("");
 
-     const { data: clubs = [], isLoading, isError } = useQuery({
-        queryKey: ['allClubs'],
+     const { data: clubs = [],  refetch } = useQuery({
+        queryKey: ['allClubs', search],
         queryFn: async () => {
-          let url = limit ? `/allClubs?limit=${limit}` : '/allClubs';
+          let url = limit ? `/allClubs?limit=${limit}&search=${search}` : `/allClubs?search=${search}`;
             const res = await axiosInstance.get(url);
             return res.data;
         }
     });
 
 
-    if (isLoading) return <Loading></Loading>
-  if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
+    useEffect(() => {
+    refetch();
+  }, [search, refetch]);
+
+
+
+  
+
+
+    // if (isLoading) return <Loading></Loading>
+  // if (isError) return <p className="text-center text-red-500">Failed to load jobs.</p>;
 
 
 
@@ -32,6 +41,21 @@ const ClubCards = ({limit, navbar}) => {
       {
         navbar &&  <Navbar></Navbar>
       }
+      <br /> <br />
+
+     
+      
+      <input
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search clubs..."
+        className="input input-bordered mb-5 block mx-auto"
+      />
+
+
+<br />
+<h2 className='text-3xl font-bold text-center mb-10'>Total club is : {clubs.length}</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 

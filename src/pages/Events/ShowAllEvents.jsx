@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import useAxios from '../../hooks/useAxios';
 import Loading from '../../shared/Loading';
 import dayjs from 'dayjs';
@@ -8,12 +8,14 @@ import { Link } from 'react-router';
 const ShowAllEvents = ({limit, UpComing}) => {
 
     let axiosInstance = useAxios();
+    let [search, setSearch] = useState('');
+     const [sort, setSort] = useState('');
 
      let { data: showAllEvents = [], isLoading, isError } = useQuery({
-        queryKey: ['ShowAllEvents', limit],
+        queryKey: ['ShowAllEvents', limit, search, sort],  
         
         queryFn: async () => {
-          let url = limit ? `/showAllEvents?limit=${limit}` : '/showAllEvents';
+          let url = limit ? `/showAllEvents?limit=${limit}&search=${search}&sort=${sort}` : `/showAllEvents?search=${search}&sort=${sort}`;
             let res = await axiosInstance.get(url);
             return res.data;
         }
@@ -26,7 +28,31 @@ const ShowAllEvents = ({limit, UpComing}) => {
     return (
         <div className="p-6">
       
-        UpComing ?
+        <div className='flex'>
+
+         <input
+        type="search"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search clubs..."
+        className="input input-bordered mb-5 block mx-auto"
+      />
+
+
+
+        <select
+          value={sort}
+          onChange={(e) => setSort(e.target.value)}
+          className="select select-bordered"
+        >
+          <option value="">Sort by Fee</option>
+          <option value="asc">Lowest to Highest</option>
+          <option value="desc">Highest to Lowest</option>
+        </select>
+
+
+        </div>
+
         <h2 className="text-3xl font-bold text-center mb-6 text-indigo-600">
           {UpComing? `${UpComing} Events` : 'All Events'}
         
