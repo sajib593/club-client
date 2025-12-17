@@ -25,6 +25,7 @@ import MemberOverview from "../pages/Dashboard/Member/MemberOverview";
 import UserActiveClubs from "../pages/Dashboard/User/UserActiveClubs";
 import UsersEvents from "../pages/Dashboard/User/UsersEvents";
 import UserPaymentHistory from "../pages/Dashboard/User/UserPaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -66,7 +67,9 @@ export const router = createBrowserRouter([
 
     {
         path: 'dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoute>
+            <DashboardLayout></DashboardLayout>
+            </PrivateRoute>,
         children: [
             {
                 path: 'allAdminClubs',
