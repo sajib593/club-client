@@ -26,6 +26,7 @@ import UserActiveClubs from "../pages/Dashboard/User/UserActiveClubs";
 import UsersEvents from "../pages/Dashboard/User/UsersEvents";
 import UserPaymentHistory from "../pages/Dashboard/User/UserPaymentHistory";
 import PrivateRoute from "./PrivateRoute";
+import Profile from "../pages/Dashboard/Profile";
 
 
 
@@ -151,6 +152,11 @@ export const router = createBrowserRouter([
             {
                 path: 'userPaymentHistory',
                 element: <UserPaymentHistory></UserPaymentHistory>
+            },
+            // all----- 
+            {
+                path: 'myProfile',
+                element: <Profile></Profile>
             }
 
         ]

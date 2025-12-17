@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
 import useRole from "../hooks/useRole";
 import { MdEmojiEvents, MdOutlineEmojiEvents, MdOutlineEventNote, MdPayment, MdRememberMe } from "react-icons/md";
-import { FaRegUser, FaUsers } from "react-icons/fa";
+import { FaRegUser, FaUser, FaUsers } from "react-icons/fa";
 import { GiClubs } from "react-icons/gi";
 import { RiPokerClubsFill } from "react-icons/ri";
 import Navbar from "./../components/Navbar";
@@ -105,6 +105,28 @@ const DashboardLayout = () => {
                 <span className="is-drawer-close:hidden">Homepage</span>
               </Link>
             </li>
+
+
+{/* ------------- user profile--------------------  */}
+<li>
+              <NavLink
+                to="/dashboard/myProfile"
+                className={({ isActive }) =>
+                  `flex items-center gap-3 rounded-lg p-3 transition-all is-active:bg-indigo-500 is-active:text-white 
+                  ${
+                    isActive
+                      ? "bg-indigo-500 text-white shadow-md"
+                      : "hover:bg-indigo-100"
+                  }
+                  is-drawer-close:tooltip is-drawer-close:tooltip-right`
+                }
+                data-tip="My-Profile"
+              >
+                <FaUser />
+                <span className="is-drawer-close:hidden">My-Profile</span>
+              </NavLink>
+            </li>
+            
 
 
 

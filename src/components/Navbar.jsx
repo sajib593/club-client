@@ -131,7 +131,7 @@ const Navbar = () => {
                  px-3 py-1 rounded-lg opacity-0 group-hover:opacity-100 
                  transition-all duration-300 whitespace-nowrap shadow-lg"
             >
-              {user.displayName}
+              {user?.displayName}
             </span>
           )}
         </div>

@@ -4,12 +4,13 @@ import useAxios from "../../hooks/useAxios";
 import Swal from "sweetalert2";
 import { useParams } from "react-router";
 import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CreateEvents = () => {
     
-    const axiosSecure = useAxios();
+    const axiosSecure = useAxiosSecure();
     let {id} = useParams();
-    console.log(id);
+    // console.log(id);
     let user = useAuth();
 
 
