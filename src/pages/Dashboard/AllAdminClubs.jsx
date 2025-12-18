@@ -30,7 +30,7 @@ const AllAdminClubs = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `Rider status is set to ${status}.`,
+                        title: `club status is set to ${status}.`,
                         showConfirmButton: false,
                         timer: 2000
                     });

@@ -19,7 +19,7 @@ const UserActiveClubs = () => {
         },
         enabled: !!user?.email,
     });
-    console.log(userClubs);
+    // console.log(userClubs);
 
     // const approvedCount = userClubs.filter(club => club.status === "active").length;
 

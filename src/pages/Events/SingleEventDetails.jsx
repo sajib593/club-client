@@ -14,7 +14,7 @@ const SingleEventDetails = () => {
 
      let axiosInstance = useAxios();
      let {id} = useParams();
-    console.log(id);
+    // console.log(id);
     let {user} = useAuth();
 
      let { data: singleEventDetails = {}, isLoading, isError } = useQuery({
@@ -27,7 +27,7 @@ const SingleEventDetails = () => {
 
 
     let handleEventRegister=()=>{
-       console.log("regis", singleEventDetails);
+      //  console.log("regis", singleEventDetails);
 
        let eventRegisterData={
 

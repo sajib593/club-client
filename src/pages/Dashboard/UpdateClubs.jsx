@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const UpdateClubs = () => {
 
     let {id} = useParams();
-    console.log(id);
+    // console.log(id);
 
     const axiosSecure = useAxiosSecure();
 

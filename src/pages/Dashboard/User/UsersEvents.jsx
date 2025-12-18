@@ -18,7 +18,7 @@ const UsersEvents = () => {
         },
         enabled: !!user?.email,
     });
-    console.log(userEvents);
+    // console.log(userEvents);
 
 
 

@@ -19,7 +19,7 @@ const SelfClubMembers = () => {
   }
 });
 
-console.log(selfClubMembers);
+// console.log(selfClubMembers);
 
 
 if(isLoading) return <Loading></Loading>

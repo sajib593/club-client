@@ -73,7 +73,7 @@ let navigate = useNavigate();
         }
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         Swal.fire("Error", "Something went wrong", "error");
     }
         

@@ -42,7 +42,7 @@ const Register = () => {
                         axiosSecure.post('/users', userInfo)
                             .then(res => {
                                 if (res.data.insertedId) {
-                                    console.log('user created in the database');
+                                    // console.log('user created in the database');
                                 }
                             });
 
@@ -64,7 +64,7 @@ const Register = () => {
 
                                 navigate(location.state || '/');
                             })
-                            .catch(error => console.log(error));
+                            // .catch(error => console.log(error));
                     });
             })
             .catch(error => {

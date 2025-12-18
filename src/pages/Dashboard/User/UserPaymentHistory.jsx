@@ -19,7 +19,7 @@ const UserPaymentHistory = () => {
         },
         enabled: !!user?.email,
     });
-    console.log(userPayments);
+    // console.log(userPayments);
 
     const totalPaid = userPayments.reduce((sum, payment) => sum + payment.amount,  0
 );

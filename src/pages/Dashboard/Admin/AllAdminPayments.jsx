@@ -57,7 +57,7 @@ const AllAdminPayments = () => {
 
   if (loading) return <Loading></Loading>;
 
-console.log(allPayments);
+// console.log(allPayments);
 
     return (
          <div className="p-6">
