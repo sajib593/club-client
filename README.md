@@ -1,4 +1,4 @@
-Club Sphere
+
 📌 Project Name
 
 Club Sphere
