@@ -14,7 +14,7 @@ const Payment = () => {
             return res.data;
         }
     });
-    console.log(membership);
+    // console.log(membership);
 
     const handleStripePayment = async () => {
         const res = await axiosInstance.post("/payment-checkout-session", {

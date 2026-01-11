@@ -123,7 +123,7 @@ const DashboardLayout = () => {
                 data-tip="My-Profile"
               >
                 <FaUser />
-                <span className="is-drawer-close:hidden">My-Profile</span>
+                <span className="is-drawer-close:hidden">Dashboard</span>
               </NavLink>
             </li>
             

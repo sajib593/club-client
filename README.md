@@ -9,7 +9,7 @@ Club Sphere is a full‑stack MERN web application designed to manage clubs, mem
 
 🌐 Live URL
 
-👉 Live Site: 
+👉 Live Site: https://loquacious-baklava-f75e22.netlify.app
 👉 Client Repository: https://github.com/sajib593/club-client
 👉 Server Repository: https://github.com/sajib593/club-server
 

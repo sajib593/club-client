@@ -48,12 +48,16 @@ const Navbar = () => {
         <h2 className="text-2xl font-bold text-yellow-300">Club Sphere</h2>
       </div>
 
-      <div className="nav flex flex-col md:flex-row gap-3 text-accent font-bold">
+      <div className="nav flex flex-col md:flex-row items-center justify-center gap-3 text-accent font-bold">
         <NavLink to="/" className={({ isActive }) =>
     isActive
       ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
       : "text-white hover:text-yellow-300"
   }>Home</NavLink>
+
+
+ 
+
 
         <NavLink to="/clubCards" className={({ isActive }) =>
     isActive
@@ -67,11 +71,17 @@ const Navbar = () => {
       : "text-white hover:text-yellow-300"
   }>Events</NavLink>
 
+       
+
         {!user && <NavLink to="/register" className={({ isActive }) =>
     isActive
       ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
       : "text-white hover:text-yellow-300"
   }>Register</NavLink>}
+
+
+
+
 
         {role == "clubManager" && (
           <>
@@ -95,6 +105,14 @@ const Navbar = () => {
       : "text-white hover:text-yellow-300"
   }>AllAdminClubs</NavLink>
         )}
+
+
+
+        <NavLink to="/dashboard/myProfile" className={({ isActive }) =>
+    isActive
+      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+      : "text-white font-bold text-2xl hover:text-yellow-300"
+  }>DashBoard</NavLink>
       </div>
 
       <div className="login-btn flex flex-col md:flex-row gap-1 items-center">
