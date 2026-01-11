@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 
 import Swal from "sweetalert2";
@@ -9,30 +9,30 @@ import useRole from "../hooks/useRole";
 const Navbar = () => {
   let { user, logOut } = use(AuthContext);
   let { role } = useRole();
+  const [theme, setTheme] = useState("light");
 
   const navLinkClass = ({ isActive }) =>
     isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+      ? "text-teal-400 font-bold border-b-2 border-teal-400"
       : "text-white hover:text-yellow-300";
 
-  //   const [theme, setTheme] = useState("light");
 
-  // Load theme from localStorage
+  // Load theme from localStorage 
 
-  //   useEffect(() => {
-  //     const savedTheme = localStorage.getItem("theme") || "light";
-  //     setTheme(savedTheme);
-  //     document.documentElement.setAttribute("data-theme", savedTheme);
-  //   }, []);
+    useEffect(() => {
+      const savedTheme = localStorage.getItem("theme") || "light";
+      setTheme(savedTheme);
+      document.documentElement.setAttribute("data-theme", savedTheme);
+    }, []);
 
-  // Handle toggle switch
+  // Handle toggle switch 
 
-  //   const handleToggle = (event) => {
-  //     const newTheme = event.target.checked ? "dark" : "light";
-  //     setTheme(newTheme);
-  //     document.documentElement.setAttribute("data-theme", newTheme);
-  //     localStorage.setItem("theme", newTheme);
-  //   };
+    const handleToggle = (event) => {
+      const newTheme = event.target.checked ? "dark" : "light";
+      setTheme(newTheme);
+      document.documentElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    };
 
   let handleLogOut = () => {
     logOut()
@@ -50,7 +50,7 @@ const Navbar = () => {
       <div className="">
         {/* {user && user.email} */}
 
-        <h2 className="text-2xl font-bold text-yellow-300">Club Sphere</h2>
+        <h2 className="text-2xl font-bold text-teal-400">Club Sphere</h2>
       </div>
 
       <div className="nav flex flex-col md:flex-row items-center justify-center gap-3 text-accent font-bold">
@@ -100,7 +100,7 @@ const Navbar = () => {
           to="/dashboard/myProfile"
           className={({ isActive }) =>
             isActive
-              ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+              ? "text-teal-400 font-bold border-b-2 border-yellow-300"
               : "text-white font-bold text-2xl hover:text-yellow-300"
           }
         >
@@ -115,16 +115,16 @@ const Navbar = () => {
                 /> */}
 
         {/* Theme Toggle */}
-        {/* <label className="flex items-center gap-2 cursor-pointer">
+        <label className="flex items-center gap-2 cursor-pointer">
           
           <input
             type="checkbox"
-            className="toggle theme-controller"
+            className="toggle theme-controller bg-base-200"
             onChange={handleToggle}
             checked={theme === "dark"}
           />
           
-        </label> */}
+        </label>
 
         <div className="relative group login-btn flex flex-col md:flex-row gap-2 items-center">
           <img
@@ -148,11 +148,11 @@ const Navbar = () => {
         </div>
 
         {user ? (
-          <button onClick={handleLogOut} className="btn btn-primary p-5">
+          <button onClick={handleLogOut} className="btn bg-teal-500 p-5">
             Logout
           </button>
         ) : (
-          <Link to="/login" className="btn btn-primary p-5">
+          <Link to="/login" className="btn bg-teal-500 p-5">
             Login
           </Link>
         )}

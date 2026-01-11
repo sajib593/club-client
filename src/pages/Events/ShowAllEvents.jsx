@@ -61,7 +61,7 @@ const ShowAllEvents = ({limit, UpComing}) => {
     
 
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white rounded-lg shadow-lg">
+        <table className="table table-zebra w-full rounded-lg shadow-lg hover:text-cyan-500 hover:font-bold">
           <thead className="bg-indigo-500 text-white">
             <tr>
               <th className="py-3 px-6 text-left">Title</th>
@@ -90,7 +90,7 @@ const ShowAllEvents = ({limit, UpComing}) => {
                 <td className="py-3 px-6">{event.maxAttendees || "-"}</td>
                 
                 <td>
-                    <Link to={`/dashboard/singleEventDetails/${event._id}`} className='btn btn-accent'>See Details</Link>
+                    <Link to={`/dashboard/singleEventDetails/${event._id}`} className='btn'>See Details</Link>
                 </td>
                 
               </tr>
