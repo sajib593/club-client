@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const Banner = () => {
     return (
         <motion.section
-      className="relative h-[500px] md:h-[600px] bg-cover bg-center flex items-center justify-center text-center"
+      className="relative h-[500px] md:h-[600px] bg-cover bg-center flex items-center justify-center text-center rounded-2xl overflow-hidden"
       style={{
         backgroundImage: `url('https://previews.123rf.com/images/enterline/enterline1503/enterline150300009/37057163-the-word-clubs-written-in-vintage-metal-letterpress-type-in-a-wooden-drawer-with-dividers.jpg')`,
         // Replace with your actual image path

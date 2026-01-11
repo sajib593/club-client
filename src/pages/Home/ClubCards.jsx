@@ -37,7 +37,7 @@ const ClubCards = ({limit, navbar}) => {
 
 
     return (
-       <>
+       <div className='max-w-7xl mx-auto'>
       {
         navbar &&  <Navbar></Navbar>
       }
@@ -132,7 +132,7 @@ const ClubCards = ({limit, navbar}) => {
 
 
 
-       </>
+       </div>
     );
 };
 
