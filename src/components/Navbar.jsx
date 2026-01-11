@@ -10,6 +10,11 @@ const Navbar = () => {
   let { user, logOut } = use(AuthContext);
   let { role } = useRole();
 
+  const navLinkClass = ({ isActive }) =>
+    isActive
+      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+      : "text-white hover:text-yellow-300";
+
   //   const [theme, setTheme] = useState("light");
 
   // Load theme from localStorage
@@ -49,70 +54,58 @@ const Navbar = () => {
       </div>
 
       <div className="nav flex flex-col md:flex-row items-center justify-center gap-3 text-accent font-bold">
-        <NavLink to="/" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>Home</NavLink>
+        <NavLink to="/" className={navLinkClass}>
+          Home
+        </NavLink>
+
+        <NavLink to="/clubCards" className={navLinkClass}>
+          All-Clubs
+        </NavLink>
+
+        <NavLink to="/dashboard/showAllEvents" className={navLinkClass}>
+          Events
+        </NavLink>
+
+        {!user && (
+          <NavLink to="/register" className={navLinkClass}>
+            Register
+          </NavLink>
+        )}
 
 
- 
-
-
-        <NavLink to="/clubCards" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>All-Clubs</NavLink>
-
-        <NavLink to="/dashboard/showAllEvents" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>Events</NavLink>
-
-       
-
-        {!user && <NavLink to="/register" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>Register</NavLink>}
-
-
-
-
+        {/* role for club manager-----------------------------------------------------    */}
 
         {role == "clubManager" && (
           <>
-            <NavLink to="/dashboard/selfClubs" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>Self-Clubs</NavLink>
+            <NavLink to="/dashboard/selfClubs" className={navLinkClass}>
+              Self-Clubs
+            </NavLink>
 
-            <NavLink to="/createClubs" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>CreateClubs</NavLink>
+            <NavLink to="/createClubs" className={navLinkClass}>
+              CreateClubs
+            </NavLink>
           </>
         )}
+
+
+        {/* role for admin ----------------------------  --------------------------- */}
+
         {role == "admin" && (
-          <NavLink to="/dashboard/allAdminClubs" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white hover:text-yellow-300"
-  }>AllAdminClubs</NavLink>
+          <NavLink to="/dashboard/allAdminClubs" className={navLinkClass}>
+            AllAdminClubs
+          </NavLink>
         )}
 
-
-
-        <NavLink to="/dashboard/myProfile" className={({ isActive }) =>
-    isActive
-      ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
-      : "text-white font-bold text-2xl hover:text-yellow-300"
-  }>DashBoard</NavLink>
+        <NavLink
+          to="/dashboard/myProfile"
+          className={({ isActive }) =>
+            isActive
+              ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+              : "text-white font-bold text-2xl hover:text-yellow-300"
+          }
+        >
+          DashBoard
+        </NavLink>
       </div>
 
       <div className="login-btn flex flex-col md:flex-row gap-1 items-center">
@@ -169,3 +162,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+//  <NavLink to="/" className={({ isActive }) =>
+//     isActive
+//       ? "text-yellow-300 font-bold border-b-2 border-yellow-300"
+//       : "text-white hover:text-yellow-300"
+//   }>Home</NavLink>
